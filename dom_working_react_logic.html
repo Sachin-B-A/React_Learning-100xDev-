@@ -1,0 +1,35 @@
+<html>
+  <body>
+    <script>
+      // State:
+      const state = {
+        count: 0,
+      };
+
+      // Component: with link from state
+      function counterComponent(count) {
+        const button = document.createElement("button");
+        button.id = "counterButton"; // Set an id to the button
+        button.innerHTML = `Count ${count}`;
+        button.setAttribute("onclick", "countIncrease()");
+        document.body.appendChild(button);
+      }
+
+      // State Update: With respect to component
+      function countIncrease() {
+        state.count++;
+        rerenderComponent(state);
+      }
+
+      function rerenderComponent(state) {
+        const counterButton = document.getElementById("counterButton");
+        if (counterButton) {
+          counterButton.innerHTML = `Count ${state.count}`;
+        }
+      }
+
+      // Initialize the component with the initial count
+      counterComponent(state.count);
+    </script>
+  </body>
+</html>
